@@ -12,13 +12,13 @@ const Lyrics = props => {
   useEffect(() => {
     axios
       .get(
-        `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${props.match.params.id}&apikey=2b91b5481c9b4ad9731e9babb52fd31f`
+        `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${props.match.params.id}&apikey=${process.env.REACT_APP_LYRICS_KEY}`
       )
       .then(res => {
         setLyrics(res.data.message.body.lyrics);
 
         return axios.get(
-          `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${props.match.params.id}&apikey=2b91b5481c9b4ad9731e9babb52fd31f`
+          `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${props.match.params.id}&apikey=${process.env.REACT_APP_LYRICS_KEY}`
         );
       })
       .then(res => {

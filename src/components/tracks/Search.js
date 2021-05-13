@@ -12,7 +12,7 @@ const Search = () => {
   useEffect(() => {
     axios
       .get(
-        `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=2b91b5481c9b4ad9731e9babb52fd31f`
+        `https://cors-access-allow.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_LYRICS_KEY}`
       )
       .then(res => {
         let track_list = res.data.message.body.track_list;
